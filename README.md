@@ -43,8 +43,6 @@ The **UT-HAR dataset** is used for human activity recognition based on **WiFi Ch
 6. **Iterative Process** – Steps repeat until convergence.
 7. **Final Model Evaluation** – Global model is tested on unseen data.
 
-![Federated Learning Diagram](link_to_image_or_diagram.png)
-
 ---
 
 ## **Model Implementation**
