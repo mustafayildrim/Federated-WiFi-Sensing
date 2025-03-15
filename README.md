@@ -1,22 +1,13 @@
 # **Enhancing Data Privacy and Model Performance with Federated Learning in WiFi Sensing Applications**
 
 ## **Overview**
-This project explores the use of **Federated Learning (FL)** in **WiFi Sensing Applications** to enhance data privacy and model performance. Instead of centralizing data, FL enables clients to collaboratively train a model while keeping their data localized. We implement **Federated WiFi Sensing** using **ResNet-18** and compare it to a traditional **CNN model** using the **UT-HAR dataset**.
+This project explores the use of **Federated Learning (FL)** in **WiFi Sensing Applications** to enhance data privacy and model performance. Instead of centralizing data, FL enables clients to collaboratively train a model while keeping their data localized. In this work, **Federated WiFi Sensing** is implemented using **ResNet-18** and compared to a traditional **CNN model** on the **UT-HAR dataset**.
 
 ## **Key Features**
 - Implements **Federated Learning** for WiFi-based human activity recognition.
 - Uses **ResNet-18** and a **Baseline CNN** to compare performance.
 - Utilizes **UT-HAR dataset** for training and evaluation.
-- Implements **differential privacy techniques** to enhance data security.
 - Demonstrates FL’s advantage in **privacy-sensitive environments** like smart homes and healthcare.
-
-## **Table of Contents**
-1. [Dataset](#dataset)
-2. [Federated Learning Architecture](#federated-learning-architecture)
-3. [Model Implementation](#model-implementation)
-4. [Training Process](#training-process)
-5. [Results](#results)
-6. [References](#references)
 
 ---
 
@@ -69,7 +60,6 @@ A simple convolutional neural network (CNN) trained for activity recognition.
 
 #### **Federated Learning with ResNet-18**
 - Distributed across multiple clients.
-- Trained using **differential privacy** techniques (Gaussian Noise, Gradient Clipping).
 - Aggregated using **FedAvg** algorithm.
 
 ---
