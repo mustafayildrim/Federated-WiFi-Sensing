@@ -101,7 +101,7 @@ This project investigates the effectiveness of **Federated Learning (FL) vs. Cen
 ## **Conclusion**
 
 - **Federated Learning enables privacy-preserving WiFi sensing applications.**
-- **For a single client, CNN outperformed ResNet-18 on test accuracy. For larger client distributions, ResNet-18 performed better in FL but had mixed results in comparison to CNN.**
+- **Performance varied based on the number of clients and model architecture, with different trade-offs observed in accuracy across different settings.**
 - **FL is suitable for applications like smart homes and healthcare.**
 
 ## **References**
