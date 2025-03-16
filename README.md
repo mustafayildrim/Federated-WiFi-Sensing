@@ -101,7 +101,6 @@ This project investigates the effectiveness of **Federated Learning (FL) vs. Cen
 - **For a single client, CNN outperformed ResNet-18 on test accuracy.**
 - **FL achieved similar accuracy to CL while preserving privacy.**
 - **FedAvg aggregation improved model stability across multiple rounds.**
-- **Higher learning rates led to faster convergence but required tuning.**
 
 ## **Conclusion**
 
