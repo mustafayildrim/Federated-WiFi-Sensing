@@ -1,89 +1,111 @@
-# **Enhancing Data Privacy and Model Performance with Federated Learning in WiFi Sensing Applications**
+# **Federated vs. Centralized Learning for WiFi Sensing using CNN and ResNet-18**
 
 ## **Overview**
-This project explores the use of **Federated Learning (FL)** in **WiFi Sensing Applications** to enhance data privacy and model performance. Instead of centralizing data, FL enables clients to collaboratively train a model while keeping their data localized. In this work, **Federated WiFi Sensing** is implemented using **ResNet-18** and compared to a traditional **CNN model** on the **UT-HAR dataset**.
+
+This project investigates the effectiveness of **Federated Learning (FL) vs. Centralized Learning (CL)** for **WiFi-based Human Activity Recognition**. It evaluates **CNN and ResNet-18** under both training paradigms using the **UT-HAR dataset**.
+
+### **Why Federated Learning?**
+
+- **Privacy-Preserving** – Data remains on local devices.
+- **Decentralized Training** – No need for a centralized dataset.
+- **Efficient Model Aggregation** – Uses **FedAvg** to combine local updates.
 
 ## **Key Features**
-- Implements **Federated Learning** for WiFi-based human activity recognition.
-- Uses **ResNet-18** and a **Baseline CNN** to compare performance.
-- Utilizes **UT-HAR dataset** for training and evaluation.
-- Demonstrates FL’s advantage in **privacy-sensitive environments** like smart homes and healthcare.
 
----
+- **Comparison between FL and CL** using CNN and ResNet-18.\
+- **UT-HAR dataset** for human activity recognition.\
+- **Implementation of Federated Averaging (FedAvg)**.\
+- **Performance evaluation with multiple clients**.
 
-## **Dataset**
-The **UT-HAR dataset** is used for human activity recognition based on **WiFi Channel State Information (CSI)**.
+## **Dataset: UT-HAR**
 
-### **Dataset Information**
+- **Size**: \~17GB
 - **Source**: University of Toronto
-- **Size**: ~17GB
-- **Data Format**: CSI measurements from 3 antennas & 30 subcarriers
-- **Collected Activities**:
+- **Data Format**: WiFi CSI measurements from **3 antennas & 30 subcarriers**.
+- **Activities**:
   - Lying down
   - Falling
   - Walking
   - Running
   - Sitting down
   - Standing up
-- **Data Collection Setup**:
-  - Commercial WiFi router (transmitter)
-  - Laptop with Intel 5300 NIC (receiver)
-  - Environment: Indoor office
+- **Setup**:
+  - **WiFi Router (transmitter)**
+  - **Laptop with Intel 5300 NIC (receiver)**
+  - **Indoor Office Environment**
 
----
+## **Federated vs. Centralized Learning**
 
-## **Federated Learning Architecture**
+### **1. Centralized Learning (CL)**
 
-### **How Federated Learning Works in WiFi Sensing**
-1. **Data Stays on Clients** – Each client trains a model on its own local dataset.
-2. **Global Model Initialization** – A central server initializes the model.
-3. **Local Training on Clients** – Clients train the model for several epochs.
-4. **Model Aggregation** – Clients send updated model weights to the server.
-5. **Global Model Update** – The server aggregates updates and refines the model.
-6. **Iterative Process** – Steps repeat until convergence.
-7. **Final Model Evaluation** – Global model is tested on unseen data.
+- **All data is stored on a central server.**
+- **One global model** is trained on the complete dataset.
+- **Uses backpropagation for model updates.**
 
----
+### **2. Federated Learning (FL)**
 
-## **Model Implementation**
-We compare **ResNet-18** and a **Baseline CNN** in a federated setting.
+- **Clients train locally on their data.**
+- **Only model updates are shared with the server.**
+- **Server aggregates weights using FedAvg.**
 
-### **Baseline CNN**
-A simple convolutional neural network (CNN) trained for activity recognition.
+## **Federated Learning Workflow**
 
-### **ResNet-18**
-- **18-layer deep residual network**
-- Uses **skip connections** to prevent vanishing gradients
-- More efficient and accurate compared to standard CNNs
+1. **Global Model Initialization** – CNN/ResNet-18 models are initialized.
+2. **Local Training** – Each client trains on its dataset.
+3. **Weight Updates Sent to Server** – Clients send model weights, not raw data.
+4. **FedAvg Aggregation** – Server averages the weights.
+5. **Repeat for multiple rounds** until convergence.
+6. **Final Evaluation** – Global model is tested on unseen data.
 
-#### **Federated Learning with ResNet-18**
-- Distributed across multiple clients.
-- Aggregated using **FedAvg** algorithm.
+## **Training Details**
 
----
+### **Global Rounds and Local Epochs**
+- **Number of Global Rounds**: 10
+- **Number of Local Epochs per Client**: 3
 
-## **Training Process**
-### **Standard Centralized Training**
-In this method, the model is trained on a single centralized dataset. The model updates are performed after each batch, with gradients computed using backpropagation. Optimization is done through an optimizer such as Adam or SGD to minimize loss.
+### **Centralized Learning (CL)**
 
-### **Federated Training**
-Federated learning distributes the training process across multiple client devices. Each client trains the model using its local data for multiple local epochs. Instead of sharing raw data, clients send their model weight updates to a central server, which aggregates them using techniques like FedAvg to create a new global model.
+- Standard training with **Adam optimizer & CrossEntropyLoss**.
+- Model updates based on gradient descent.
 
----
+### **Federated Learning (FL)**
 
-## **Results**
-- **FL with ResNet-18 outperformed traditional CNNs**.
-- **Higher accuracy with minimal training rounds**.
-- **Federated Learning was more stable with privacy enhancements**.
-- **Impact of Learning Rates**:
-  - Higher rates improved initial learning speed.
-  - Lower rates led to more stable accuracy.
-- **Comparison with Centralized Training**:
-  - FL model maintained or improved accuracy without direct data sharing.
+- **Clients train locally** for multiple epochs before sharing updates.
+- **FedAvg aggregates model weights** instead of sharing data.
+- **Experiments with varying numbers of clients**:
+  - **1 client** (baseline)
+  - **5 clients**
+  - **10 clients**
 
----
+## **Results & Insights**
+
+### **Federated Learning vs. Centralized Learning Performance**
+
+| Clients | Model  | Training Accuracy (Final) | Test Accuracy |
+| ------- | ------ | ------------------------- | ------------- |
+| 1       | CNN    | 99.38%                    | 95.00%        |
+| 1       | ResNet | 99.06%                    | 59.60%        |
+| 5       | CNN    | 99.48%                    | 96.80%        |
+| 5       | ResNet | 99.26%                    | 95.60%        |
+| 10      | CNN    | 99.48%                    | 97.40%        |
+| 10      | ResNet | 99.17%                    | 98.60%        |
+
+### **Key Takeaways**
+
+- **Federated Learning (FL) with ResNet-18 performed better than CNN for larger client distributions.**
+- **For a single client, CNN outperformed ResNet-18 on test accuracy.**
+- **FL achieved similar accuracy to CL while preserving privacy.**
+- **FedAvg aggregation improved model stability across multiple rounds.**
+- **Higher learning rates led to faster convergence but required tuning.**
+
+## **Conclusion**
+
+- **Federated Learning enables privacy-preserving WiFi sensing applications.**
+- **For a single client, CNN outperformed ResNet-18 on test accuracy. For larger client distributions, ResNet-18 performed better in FL but had mixed results in comparison to CNN.**
+- **FL is suitable for applications like smart homes and healthcare.**
 
 ## **References**
+
 1. **WiFi Sensing Research** – [IEEE Communications Magazine, Vol. 55, No. 10](https://doi.org/10.1109/MCOM.2017.1700082)
 2. **Federated Learning Security & Privacy** – [Future Generation Computer Systems, 2021](https://doi.org/10.1016/j.future.2020.10.007)
 3. **WiFi Sensing with FL** – [IEEE IoT Journal, 2022](https://doi.org/10.1109/JIOT.2021.3137793)
