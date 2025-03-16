@@ -63,10 +63,10 @@ A simple convolutional neural network (CNN) trained for activity recognition.
 ---
 
 ## **Training Process**
-### **1️⃣ Standard Centralized Training**
+### **Standard Centralized Training**
 In this method, the model is trained on a single centralized dataset. The model updates are performed after each batch, with gradients computed using backpropagation. Optimization is done through an optimizer such as Adam or SGD to minimize loss.
 
-### **2️⃣ Federated Training**
+### **Federated Training**
 Federated learning distributes the training process across multiple client devices. Each client trains the model using its local data for multiple local epochs. Instead of sharing raw data, clients send their model weight updates to a central server, which aggregates them using techniques like FedAvg to create a new global model.
 
 ---
