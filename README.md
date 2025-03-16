@@ -12,9 +12,9 @@ This project investigates the effectiveness of **Federated Learning (FL) vs. Cen
 
 ## **Key Features**
 
-- **Comparison between FL and CL** using CNN and ResNet-18.\
-- **UT-HAR dataset** for human activity recognition.\
-- **Implementation of Federated Averaging (FedAvg)**.\
+- **Comparison between FL and CL** using CNN and ResNet-18.
+- **UT-HAR dataset** for human activity recognition.
+- **Implementation of Federated Averaging (FedAvg)**.
 - **Performance evaluation with multiple clients**.
 
 ## **Dataset: UT-HAR**
@@ -89,6 +89,11 @@ This project investigates the effectiveness of **Federated Learning (FL) vs. Cen
 | 5       | ResNet | 99.26%                    | 95.60%        |
 | 10      | CNN    | 99.48%                    | 97.40%        |
 | 10      | ResNet | 99.17%                    | 98.60%        |
+
+![CNN Model Accuracy](outputs/cnn_output.png)
+
+![ResNet Model Accuracy](outputs/resnet_output.png)
+
 
 ### **Key Takeaways**
 
